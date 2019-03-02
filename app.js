@@ -24,7 +24,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/public", express.static(path.join("public")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/static", express.static(path.join(__dirname, 'static')));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use("/api", useRoutes);
 
 app.get('/', (req, res, next) => {
-    
+    res.render('home');
 })
 
 
