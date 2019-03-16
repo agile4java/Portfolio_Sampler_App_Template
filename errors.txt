@@ -1,0 +1,30 @@
+Error: The partial gridster_main.handlebars could not be found
+
+ERROR WITH :: 
+
+        app.engine('handlebars', exphbs({
+            extname: 'handlebars',
+            // defaultView: 'default',
+            layoutsDir: __dirname + '/views/layouts',
+            partialsDir: __dirname + '/views/partials',  
+            defaultLayout: 'main'}));
+
+
+FIXED WITH ::
+
+    
+    // create expresshandlbars instance with a default layout
+    var hbs = exphbs.create({
+        defaultLayout: 'main',
+        // Can use multiple partials directories
+        partialsDir: [
+            'views/partials',
+            'views/blocks'
+        ]
+    });
+
+    // Register `hbs` as our view engine using its bound `engine()` function.
+    app.engine('handlebars', hbs.engine);
+    app.set('view engine', 'handlebars');
+
+
