@@ -1,4 +1,4 @@
-
+const hbs = require('../middleware/exphbs_create');
 
 let Promise = global.Promise || require('promise');
 // Middleware to expose the app's shared templates to the client-side of the app
